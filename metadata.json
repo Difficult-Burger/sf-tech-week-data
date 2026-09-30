@@ -1,0 +1,10 @@
+{
+  "generatedAt": "2026-09-30T02:18:51.455Z",
+  "source": "Public SF Tech Week listings, reviewed by the Sidequest project",
+  "goldenCommit": "37e328eaf",
+  "counts": {
+    "events": 1650,
+    "people": 3154
+  },
+  "note": "Saved public listings captured before the week. All times are San Francisco time (Pacific, ISO with offset). Times, admission and availability can change: confirm on the host page (url). Intents are keyword/tag matches, not host categories. RSVP counts are dated snapshots."
+}
