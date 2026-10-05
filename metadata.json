@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-02T03:40:40.403Z",
-  "source": "Public SF Tech Week listings, reviewed by Lychee (lychee.quest)",
+  "generatedAt": "2026-10-05T04:40:48.013Z",
+  "source": "Public SF Tech Week listings, reviewed by techweek.wiki",
   "goldenCommit": "37e328eaf",
   "counts": {
-    "events": 1650,
-    "people": 3154
+    "events": 1593,
+    "people": 2871
   },
   "note": "Saved public listings captured before the week. All times are San Francisco time (Pacific, ISO with offset). Times, admission and availability can change: confirm on the host page (url). Intents are keyword/tag matches, not host categories. RSVP counts are dated snapshots."
 }

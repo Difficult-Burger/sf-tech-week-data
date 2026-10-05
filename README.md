@@ -1,6 +1,6 @@
 # sf-tech-week-data
 
-Open data for **SF Tech Week 2026** (Oct 5–11, San Francisco): every event and the people named on it, as plain JSON Lines. It is the same information the [Lychee](https://lychee.quest) guide shows on screen, nothing more.
+Open data for **SF Tech Week 2026** (Oct 5–11, San Francisco): every event and the people named on it, as plain JSON Lines. It is the same information the [Lychee](https://techweek.wiki) guide shows on screen, nothing more.
 
 - `events.jsonl`: one event per line
 - `people.jsonl`: one person per line, with the events they are named on
