@@ -1,6 +1,6 @@
 # sf-tech-week-data
 
-Open data for **SF Tech Week 2026** (Oct 5–11, San Francisco): every event and the people named on it, as plain JSON Lines. It is the same information the [Lychee](https://techweek.wiki) guide shows on screen, nothing more.
+Open data for **SF Tech Week 2026** (Oct 5–11, San Francisco): every event and the people named on it, as plain JSON Lines. It is the same information the [techweek.wiki](https://techweek.wiki) guide shows on screen, nothing more.
 
 - `events.jsonl`: one event per line
 - `people.jsonl`: one person per line, with the events they are named on
@@ -36,4 +36,4 @@ Something wrong? Open an issue with the event id, what is wrong and a link to th
 
 Data: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Please credit "sf-tech-week-data". Event descriptions and names belong to their hosts; this project is independent and not affiliated with or endorsed by SF Tech Week or its organizers.
 
-The snapshot is generated from the Lychee site's own data by an allow-list, so a field that is not on screen there is not here.
+The snapshot is generated from the techweek.wiki site's own data by an allow-list, so a field that is not on screen there is not here.
