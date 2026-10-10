@@ -1,5 +1,7 @@
 # sf-tech-week-data
 
+**English** | [中文](README.zh-CN.md)
+
 Open data for **SF Tech Week 2026** (Oct 5–11, San Francisco): every event on the official calendar and the hosts and speakers named on it. It is the same information the [techweek.wiki](https://techweek.wiki) guide showed on screen, nothing more.
 
 **This is the final snapshot (v1.0).** The week is over and the data will not be updated. Cite or pin the [v1.0 release](../../releases/tag/v1.0) if you need a fixed version.
