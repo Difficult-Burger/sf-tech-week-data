@@ -1,39 +1,66 @@
 # sf-tech-week-data
 
-Open data for **SF Tech Week 2026** (Oct 5–11, San Francisco): every event and the people named on it, as plain JSON Lines. It is the same information the [techweek.wiki](https://techweek.wiki) guide shows on screen, nothing more.
+Open data for **SF Tech Week 2026** (Oct 5–11, San Francisco): every event on the official calendar and the hosts and speakers named on it. It is the same information the [techweek.wiki](https://techweek.wiki) guide showed on screen, nothing more.
 
-- `events.jsonl`: one event per line
-- `people.jsonl`: one person per line, with the events they are named on
-- `metadata.json`: when this snapshot was made and how many rows it has
+**This is the final snapshot (v1.0).** The week is over and the data will not be updated. Cite or pin the [v1.0 release](../../releases/tag/v1.0) if you need a fixed version.
 
-Times are San Francisco time (ISO 8601 with offset). The data is a dated snapshot of public listings: times, admission and availability change, so always confirm on the host page (`url`).
+## Files
 
-## `events.jsonl`
+| file | rows | what |
+|---|---|---|
+| `events.jsonl` / `events.csv` | 1,593 | one event per row |
+| `people.jsonl` / `people.csv` | 3,424 | one person per row |
+| `event_people.csv` | 3,994 | who is named on which event (join table for the CSVs) |
+| `metadata.json` | | when the snapshot was made and row counts |
+
+The JSONL and CSV files hold the same data. In the CSVs, lists (tags) are joined with `; `, and an event's people are in `event_people.csv` instead of a nested list.
+
+## `events`
 
 | field | meaning |
 |---|---|
-| `id` | stable event id |
-| `title`, `headline`, `summary` | name, one-line takeaway, short description (English) |
-| `date`, `start`, `end` | day and Pacific-time ISO timestamps (`null` when unknown) |
-| `area`, `address` | neighborhood; street address only when the host publishes one |
+| `id` | stable event id (the official calendar's id) |
+| `title`, `headline` | name as listed; short takeaway |
+| `summary` | the host's own opening paragraph; `null` when the listing had none or only the calendar's stock line |
+| `date`, `start`, `end` | day and San Francisco time as ISO 8601 with offset (`null` when unknown) |
+| `area`, `address` | neighborhood; street address only when the host published one |
 | `host` | host name as listed |
 | `registration` | `RSVP`, `Application` or `Unknown`; `needsApproval` is `true` for `Application` |
-| `availability` | `SoldOut`, `LimitedAvailability` or `null` at snapshot time |
-| `rsvpCount` | RSVP count at snapshot time, or `null` |
+| `availability` | `SoldOut`, `LimitedAvailability` or `null` when captured |
+| `rsvpCount` | RSVP count when captured, or `null` |
 | `intents`, `topics`, `formats` | tags: what a visitor may want, subject areas, event formats |
-| `people` | `[{name, role, title, company, profile}]` hosts and speakers named on the event |
-| `url` | the host's public page: where to RSVP or apply |
+| `people` (JSONL) / `peopleCount` (CSV) | hosts and speakers named on the event: `[{name, role, title, company, profile}]` |
+| `url` | the host's public page (where to RSVP or apply, and the full description) |
 
-## `people.jsonl`
+## `people`
 
-`name`, `title`, `company`, `profile` (a public profile link, mostly LinkedIn) and `events`: `[{id, role}]`. People are merged by profile link, otherwise by name and company. Biographies are deliberately not included.
+| field | meaning |
+|---|---|
+| `id` | stable id within this snapshot, used by `event_people.csv` |
+| `name`, `title`, `company` | as published or matched; `title`/`company` may be `null` |
+| `profile` | a public profile link: LinkedIn (2,587), Partiful host page (259), personal site (75), or `null` (503) |
+| `events` (JSONL) / `eventCount` (CSV) | the events they are named on, with their role (`host` or `speaker`) |
 
-## Corrections
+People are merged by profile link, otherwise by name and company. Biographies and contact details are deliberately not included.
 
-Something wrong? Open an issue with the event id, what is wrong and a link to the source. A person reviews every report.
+## How it was made
+
+- **Events:** the official SF Tech Week calendar as of 2026-10-04, enriched with each event's public registration page (mostly Partiful). Titles and times follow the official calendar.
+- **People:** hosts and speakers named on the event pages; **not attendees**. Profiles were matched by searching public sources, then reviewed; weak matches were left out rather than guessed.
+- **Tags:** keyword and tag matches from the listings, not categories chosen by hosts.
+
+## Known limitations
+
+- Times, admission and availability changed during the week. Always confirm on the host page (`url`).
+- `rsvpCount` is a single capture taken before the week, not a final attendance figure.
+- Events delisted before 2026-10-04 and events added after it are not included.
+- Profile matching can be wrong, especially for common names. Report mistakes (see below).
+- Event descriptions are not included because they belong to their hosts; `url` links to them.
+
+## Corrections and removal
+
+Something wrong, or listed and want your entry removed? Open an issue with the event or person id and, for corrections, a link to the source. Removal requests are honored without questions.
 
 ## License
 
-Data: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Please credit "sf-tech-week-data". Event descriptions and names belong to their hosts; this project is independent and not affiliated with or endorsed by SF Tech Week or its organizers.
-
-The snapshot is generated from the techweek.wiki site's own data by an allow-list, so a field that is not on screen there is not here.
+Data: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Please credit "sf-tech-week-data". Event names belong to their hosts. This project is independent and not affiliated with or endorsed by SF Tech Week or its organizers.
